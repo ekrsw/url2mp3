@@ -32,6 +32,14 @@ def ytdlp_to_mp3(urls, outdir="downloads", kbps=192):
         "overwrites": False,
         # プレイリストURLなら全件取得（個々のURLでもそのまま動作）
         "yesplaylist": True,
+        # YouTube 403エラー対策
+        "cookiefile": None,  # Cookieファイルパスを指定可能
+        "extractor_args": {
+            "youtube": {
+                "player_client": ["android", "web"],
+                "player_skip": ["configs"],
+            }
+        },
     }
 
     # 単一URLでも複数URLでも扱えるように
@@ -43,6 +51,6 @@ def ytdlp_to_mp3(urls, outdir="downloads", kbps=192):
 
 if __name__ == "__main__":
     # 例：単体動画
-    ytdlp_to_mp3("https://youtu.be/yGUqYqTPYzs?si=QvbvUm0Fgr4iB8vS", kbps=192)
+    ytdlp_to_mp3("https://youtu.be/N9HV9gpq4f4?si=dBDa2Mg8bX55wRrp", kbps=192)
     # 例：プレイリスト
     # ytdlp_to_mp3("https://www.youtube.com/playlist?list=YYYYYYYYYYY", kbps=320)
